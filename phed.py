@@ -31,8 +31,8 @@ class Window( QMainWindow ):
 			Qt.BevelJoin
 		)
 
-		w = self.view.width()
-		h = self.view.height()
+		w = self.scene.width()
+		h = self.scene.height()
 
 		for i in range( 5 ):
 			x1 = random.randint(1, int(w - 1))
