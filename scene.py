@@ -15,5 +15,22 @@ class Scene( QGraphicsScene ):
 		self.addLine( 0, 0, 100, 30,
 			pen )
 
+	def lotsoflines( self ):
 
-		print( len( self.items() ) )
+		pen = QPen( QBrush( QColor( 0, 0, 150, 50 ) ),
+			15.0,
+			Qt.SolidLine,
+			Qt.RoundCap,
+			Qt.BevelJoin
+		)
+
+		w = self.width()
+		h = self.height()
+
+		for i in range( 5 ):
+			x1 = random.randint(1, int(w - 1))
+			y1 = random.randint(1, int(h - 1))
+			x2 = random.randint(1, int(w - 1))
+			y2 = random.randint(1, int(h - 1))
+			self.addLine(x1, y1, x2, y2, pen)
+

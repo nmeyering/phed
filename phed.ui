@@ -20,16 +20,6 @@
    <string>phed</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QGraphicsView" name="graphicsView">
-    <property name="geometry">
-     <rect>
-      <x>0</x>
-      <y>0</y>
-      <width>641</width>
-      <height>481</height>
-     </rect>
-    </property>
-   </widget>
    <widget class="QPushButton" name="pushButton">
     <property name="geometry">
      <rect>
@@ -41,6 +31,16 @@
     </property>
     <property name="text">
      <string>!</string>
+    </property>
+   </widget>
+   <widget class="PhedView" name="phedView">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>641</width>
+      <height>471</height>
+     </rect>
     </property>
    </widget>
   </widget>
@@ -74,6 +74,13 @@
    </property>
   </action>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>PhedView</class>
+   <extends>QGraphicsView</extends>
+   <header>phedview.h</header>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections/>
 </ui>
