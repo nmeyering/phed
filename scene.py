@@ -4,19 +4,12 @@ from PyQt4.QtCore import Qt
 
 class Scene( QGraphicsScene ):
 	def __init__( self ):
+
 		QGraphicsScene.__init__( self )
 
 		self.setSceneRect( 0, 0, 1024, 768 )
-		#self.setBackgroundBrush( QBrush( QColor( "black" ) ) )
-
-		self.addText( "Hello, World!" )
-
-		pen = QPen( QColor( 255, 0, 0 ) )
-		self.addLine( 0, 0, 100, 30,
-			pen )
 
 	def lotsoflines( self ):
-
 		pen = QPen( QBrush( QColor( 0, 0, 150, 50 ) ),
 			15.0,
 			Qt.SolidLine,
@@ -34,3 +27,13 @@ class Scene( QGraphicsScene ):
 			y2 = random.randint(1, int(h - 1))
 			self.addLine(x1, y1, x2, y2, pen)
 
+	def drawPoint( self, x, y ):
+		pen = QPen( QBrush( QColor( 0, 0, 150, 50 ) ),
+			15.0,
+			Qt.SolidLine,
+			Qt.RoundCap,
+			Qt.BevelJoin
+		)
+
+		print([x,y])
+		self.addLine( x, y, x+1, y+1, pen )

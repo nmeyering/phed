@@ -33,7 +33,7 @@
      <string>!</string>
     </property>
    </widget>
-   <widget class="PhedView" name="phedView">
+   <widget class="View" name="phedView">
     <property name="geometry">
      <rect>
       <x>0</x>
@@ -76,9 +76,9 @@
  </widget>
  <customwidgets>
   <customwidget>
-   <class>PhedView</class>
+   <class>View</class>
    <extends>QGraphicsView</extends>
-   <header>phedview.h</header>
+   <header>view.h</header>
   </customwidget>
  </customwidgets>
  <resources/>
