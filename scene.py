@@ -1,6 +1,6 @@
 import sys, random
 from PyQt4.QtGui import QGraphicsScene, QPen, QColor, QBrush
-from PyQt4.QtCore import Qt
+from PyQt4.QtCore import Qt, QPoint, QPointF, QLineF
 
 class Scene( QGraphicsScene ):
 	def __init__( self ):
@@ -27,13 +27,17 @@ class Scene( QGraphicsScene ):
 			y2 = random.randint(1, int(h - 1))
 			self.addLine(x1, y1, x2, y2, pen)
 
-	def drawPoint( self, x, y ):
+	def drawPoint( self, point ):
 		pen = QPen( QBrush( QColor( 0, 0, 150, 50 ) ),
 			15.0,
 			Qt.SolidLine,
 			Qt.RoundCap,
 			Qt.BevelJoin
 		)
+		
+		point2 = QPointF( point.x() + 1, point.y() + 1 )
 
-		print([x,y])
-		self.addLine( x, y, x+1, y+1, pen )
+		self.addLine( 
+			QLineF( 
+				point, point2 ),
+			pen )

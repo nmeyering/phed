@@ -1,4 +1,5 @@
 from PyQt4.QtGui import QGraphicsView
+from PyQt4.QtCore import QPoint, QPointF
 from scene import Scene
 
 class View( QGraphicsView ):
@@ -11,4 +12,6 @@ class View( QGraphicsView ):
 		self.setDragMode( QGraphicsView.ScrollHandDrag )
 	
 	def mousePressEvent( self, event ):
-		self.scene().drawPoint(event.x(), event.y())
+		point = self.mapToScene(
+			QPoint( event.x(), event.y() ) )
+		self.scene().drawPoint( point )
