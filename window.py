@@ -17,4 +17,6 @@ class Window( QMainWindow ):
 		
 		button = self.ui.pushButton
 		button.clicked.connect( scene.lotsoflines )
+		clearbutton = self.ui.clearButton
+		clearbutton.clicked.connect( scene.clear )
 
