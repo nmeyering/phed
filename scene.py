@@ -1,6 +1,7 @@
 import sys, random
 from PyQt4.QtGui import QGraphicsScene, QPen, QColor, QBrush
 from PyQt4.QtCore import Qt, QPoint, QPointF, QLineF
+from tux import Tux
 
 class Scene( QGraphicsScene ):
 	def __init__( self ):
@@ -14,6 +15,7 @@ class Scene( QGraphicsScene ):
 			Qt.RoundCap,
 			Qt.BevelJoin
 		)
+
 
 	def lotsoflines( self ):
 		w = self.width()
@@ -37,8 +39,18 @@ class Scene( QGraphicsScene ):
 	def drawLine( self, line ):
 		self.addLine( line, self.pen )
 	
+	def drawTux( self, point ):
+		tux = Tux()
+		tux.setPos( point - QPointF( 128.0, 128.0 ) )
+		self.addItem( tux )
+
 	def setColor( self, color ):
 		self.pen.setColor( color )
 	
 	def setWidth( self, width ):
 		self.pen.setWidth( width )
+	
+	def cleanup( self ):
+		print('Cleared {c} items.'.format(
+			c = len( self.items() ) ) )
+		self.clear()

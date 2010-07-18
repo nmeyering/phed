@@ -19,6 +19,9 @@ class View( QGraphicsView ):
 			point = self.mapToScene( event.pos() )
 			self.lastPoint = point
 			self.scribbling = True
+		else:
+			point = self.mapToScene( event.pos() )
+			self.scene().drawTux( point )
 	
 	def mouseMoveEvent( self, event ):
 		if ( event.buttons() & Qt.RightButton ) and self.scribbling:
@@ -35,4 +38,6 @@ class View( QGraphicsView ):
 				self.lastPoint,
 				point ) )
 			self.scribbling = false
-			
+	
+	def rotate1( self ):
+		self.rotate( 360/150 )

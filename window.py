@@ -20,7 +20,7 @@ class Window( QMainWindow ):
 		spinBox = self.ui.spinBox
 
 		button.clicked.connect( self.chooseColor )
-		clearbutton.clicked.connect( self.scene.clear )
+		clearbutton.clicked.connect( self.scene.cleanup )
 		spinBox.valueChanged.connect( self.updateWidth )
 
 	def chooseColor( self ):
