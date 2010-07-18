@@ -36,3 +36,9 @@ class Scene( QGraphicsScene ):
 
 	def drawLine( self, line ):
 		self.addLine( line, self.pen )
+	
+	def setColor( self, color ):
+		self.pen.setColor( color )
+	
+	def setWidth( self, width ):
+		self.pen.setWidth( width )

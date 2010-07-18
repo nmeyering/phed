@@ -1,5 +1,5 @@
 from PyQt4.QtGui import QGraphicsView
-from PyQt4.QtCore import QPoint, QPointF, QLineF
+from PyQt4.QtCore import QPoint, QPointF, QLineF, Qt
 from scene import Scene
 
 class View( QGraphicsView ):
@@ -10,18 +10,29 @@ class View( QGraphicsView ):
 		self.setScene( scene )
 		self.lastPoint = QPointF()
 
-		self.setDragMode( QGraphicsView.ScrollHandDrag )
+		self.setDragMode( QGraphicsView.NoDrag )
+
+		self.scribbling = False
 	
 	def mousePressEvent( self, event ):
-		point = self.mapToScene(
-			QPoint( event.x(), event.y() ) )
-		self.scene().drawPoint( point )
-		self.lastPoint = point
+		if event.button() == Qt.RightButton:
+			point = self.mapToScene( event.pos() )
+			self.lastPoint = point
+			self.scribbling = True
 	
 	def mouseMoveEvent( self, event ):
-		point = self.mapToScene(
-			QPoint( event.x(), event.y() ) )
-		self.scene().drawLine( QLineF(
-			self.lastPoint,
-			point ) )
-		self.lastPoint = point
+		if ( event.buttons() & Qt.RightButton ) and self.scribbling:
+			point = self.mapToScene( event.pos() )
+			self.scene().drawLine( QLineF(
+				self.lastPoint,
+				point ) )
+			self.lastPoint = point
+
+	def mouseReleasedEvent( self, event ):
+		if self.scribbling and event.button() == Qt.RightButton:
+			point = self.mapToScene( event.pos() )
+			self.scene().drawLine( QLineF(
+				self.lastPoint,
+				point ) )
+			self.scribbling = false
+			
