@@ -12,20 +12,17 @@ class Window( QMainWindow ):
 		self.ui = Ui_EditWindow()
 		self.ui.setupUi( self )
 
-		self.view = self.ui.phedView
-		self.scene = self.view.scene()
+		self.edit = self.ui.edit
+		self.scene = self.edit.scene()
 
 		button = self.ui.pushButton
 		clearbutton = self.ui.clearButton
 		spinBox = self.ui.spinBox
 
-		button.clicked.connect( self.chooseColor )
-		clearbutton.clicked.connect( self.scene.cleanup )
-		spinBox.valueChanged.connect( self.updateWidth )
+		button.clicked.connect( self.edit.chooseColor )
+		clearbutton.clicked.connect( self.edit.cleanup )
+		spinBox.valueChanged.connect( (lambda : self.edit.setWidth(
+			spinBox.value() ) ) )
 
-	def chooseColor( self ):
-		col = QColorDialog( self ).getColor()
-		self.scene.setColor( col )
-
-	def updateWidth( self ):
-		self.scene.setWidth( self.ui.spinBox.value() )
+		self.ui.actionOpen.triggered.connect( self.edit.openFile )
+		self.ui.actionSave.triggered.connect( self.edit.saveFile )

@@ -5,13 +5,12 @@ from PyQt4.QtGui import QApplication
 from PyQt4.QtCore import QTimer, QTime
 from window import Window
 
-app = QApplication( sys.argv )
-#Qt.qsrand( QTime(0,0,0).secsTo( QTime.currentTime() ) )
-window = Window()
-window.show()
+def main():
+	app = QApplication( sys.argv )
+	window = Window()
+	window.show()
 
-timer = QTimer()
-timer.timeout.connect( window.view.rotate1 )
-timer.start( 30 )
+	sys.exit(app.exec_())
 
-sys.exit(app.exec_())
+if __name__ == "__main__":
+	main()

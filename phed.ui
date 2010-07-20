@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>757</width>
-    <height>527</height>
+    <width>761</width>
+    <height>528</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -19,7 +19,7 @@
   <property name="windowTitle">
    <string>phed</string>
   </property>
-  <widget class="QWidget" name="centralwidget">
+  <widget class="QWidget" name="centralWidget">
    <widget class="QPushButton" name="pushButton">
     <property name="geometry">
      <rect>
@@ -33,7 +33,7 @@
      <string>color</string>
     </property>
    </widget>
-   <widget class="View" name="phedView">
+   <widget class="EditArea" name="edit">
     <property name="geometry">
      <rect>
       <x>0</x>
@@ -145,8 +145,8 @@ p, li { white-space: pre-wrap; }
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>757</width>
-     <height>24</height>
+     <width>761</width>
+     <height>20</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">
@@ -172,9 +172,9 @@ p, li { white-space: pre-wrap; }
  </widget>
  <customwidgets>
   <customwidget>
-   <class>View</class>
+   <class>EditArea</class>
    <extends>QGraphicsView</extends>
-   <header>view.h</header>
+   <header>editarea.h</header>
   </customwidget>
  </customwidgets>
  <resources/>
